@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FBI Special Agent Gateway Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 100px;
+    }
+
+    #login-container {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    #fbi-portal {
+      display: none;
+      /* Initially hide the FBI portal */
+    }
+
+    .header {
+      text-align: left;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+
+    .main-content {
+      padding: 20px;
+    }
+
+    #searchResult {
+      /* Add your styling for search results here */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="login-container">
+    <h2>FBI Special Agent Login</h2>
+    <form id="login-form">
+      <label for="badgeNumber">Badge Number:</label>
+      <input type="text" id="badgeNumber" required>
+
+      <label for="password">Agent ID Password:</label>
+      <input type="password" id="password" required>
+
+      <button type="button" onclick="checkCredentials()">Login</button>
+    </form>
+  </div>
+
+  <div id="fbi-portal">
+    <div class="header">
+      <h2>FBI Special Agent Portal</h2>
+      <input type="text" placeholder="Search..." id="searchInput" oninput="searchDatabase()">
+    </div>
+    <div class="main-content" id="searchResult"></div>
+    <div class="section most-wanted">
+      <h3>Most Wanted Terrorist</h3>
+      <div class="person">
+        <img src="preview.webp" alt="ABDELKARIM HUSSEIN MOHAMED AL-NASSER">
+        <p>Conspiracy to Kill U.S. Nationals; Conspiracy to Murder U.S. Employees; Conspiracy to Use Weapons of Mass
+          Destruction Against U.S. Nationals; Conspiracy to Destroy Property of the U.S.; Conspiracy to Attack National
+          Defense Utilities; Bombing Resulting in Death; Use of Weapons of Mass Destruction Against U.S. Nationals;
+          Murder While Using Destructive Device During a Crime of Violence; Murder of Federal Employees; Attempted
+          Murder of Federal Employees</p>
+        <p><b>ABDELKARIM HUSSEIN MOHAMED AL-NASSER</b></p>
+      </div>
+    </div>
+    <div class="section open-cases">
+      <h3>Open Case Files</h3>
+      <div class="case">
+        <p>Cases Are Available On The Open Cases Gateway, Not Cyber</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkCredentials() {
+      var badgeNumber = document.getElementById('badgeNumber').value;
+      var password = document.getElementById('password').value;
+
+      // Check if badge number and password match
+      if (badgeNumber === '1006498' && password === 'Washu0112!') {
+        // Simulate high-tech FBI portal interface
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('fbi-portal').style.display = 'block';
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+    }
+
+    function searchDatabase() {
+      var searchInput = document.getElementById('searchInput').value.toLowerCase();
+      var searchResult = document.getElementById('searchResult');
+
+      // Ensure searchResult is not null before proceeding
+      if (searchResult) {
+        // Placeholder data (replace with real database interaction)
+        var database = [
+          {name: "<a href='https://www.exterro.com/ftk-imager' target='_blank'>FTK Imager</a>", description: "A quick way to see what data is on a computer hard drive"},
+        ];
+        alert("THIS DATABASE ONLY INCLUDES FTK IMAGER, THE REST IS LISTED ON THE GATEWAY APPLICATION FOR SECURITY REASONS")
+
+        var results = database.filter(item => item.name.toLowerCase().includes(searchInput));
+
+        if (results.length > 0) {
+          searchResult.innerHTML = "<h3>Search Results:</h3>";
+          results.forEach(item => {
+            searchResult.innerHTML += `<div><strong>${item.name}</strong>: ${item.description}</div>`;
+          });
+        } else {
+          searchResult.innerHTML = "<p>No results found.</p>";
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
